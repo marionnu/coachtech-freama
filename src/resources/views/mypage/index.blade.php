@@ -37,11 +37,11 @@
         @endphp
         <a class="card card--product" href="{{ route('items.show', $item) }}">
           <div class="thumb thumb--square">
-            <img src="{{ $src }}" alt="{{ $item->item_name }}">
+            <img src="{{ $src }}" alt="{{ $item->name ?? $item->item_name }}">
             @if($isSold)<span class="badge badge--sold">SOLD</span>@endif
           </div>
           <div class="meta meta--compact">
-            <div class="product-name">{{ $item->item_name }}</div>
+            <div class="product-name">{{ $item->name ?? $item->item_name }}</div>
           </div>
         </a>
       @endforeach

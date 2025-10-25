@@ -1,21 +1,241 @@
-.sell-wrap{max-width:760px;margin:40px auto;padding:0 20px;}
-.sell-card{background:#fff;border:1px solid #e6e6e6;border-radius:6px;padding:28px 28px 36px;}
-.title{font-weight:700;font-size:22px;text-align:center;margin:6px 0 24px;}
-.sec{margin-top:26px;}
-.sec h3{font-size:14px;color:#222;margin:0 0 10px;}
-.divider{height:1px;background:#eeeeee;margin:18px 0;}
-.image-drop{border:1px solid #e6e6e6;border-radius:6px;height:130px;display:flex;align-items:center;justify-content:center;background:#fafafa;}
-.image-btn{display:inline-block;background:#ffe5e5;color:#e64a4a;border:1px solid #ffc9c9;border-radius:20px;padding:8px 16px;font-size:12px;cursor:pointer;}
-.image-input{display:none;}
-.thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-.thumbs img{width:70px;height:70px;object-fit:cover;border-radius:6px;border:1px solid #eee}
-.chips{display:flex;gap:8px 10px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:9999px;border:1px solid #ffc9c9;background:#fff5f5;color:#e85a5a;font-size:12px;cursor:pointer;}
-.chip input{display:none}
-.chip input:checked + span{background:#ff7d7d;color:#fff;border-color:#ff7d7d;padding:6px 10px;border-radius:9999px}
-.input,.select,.textarea{width:100%;border:1px solid #e6e6e6;border-radius:6px;padding:10px 12px;font-size:14px;background:#fff;}
-.textarea{min-height:100px;resize:vertical}
-.yen{display:flex;align-items:center;gap:8px}
-.yen span{font-weight:700}
-.submit{width:240px;display:block;margin:28px auto 0;background:#ff7676;border:none;color:#fff;padding:12px 16px;border-radius:6px;font-weight:700;cursor:pointer;}
-.err{color:#d63939;font-size:12px;margin-top:6px}
+/* ===== Theme Vars ===== */
+:root{
+  --c-border:#e6e6e6;
+  --c-border-soft:#eee;
+  --c-bg:#fff;
+  --c-bg-soft:#fafafa;
+  --c-text:#222;
+  --c-danger:#d63939;
+  --c-accent:#ff7676;
+  --c-accent-weak:#ffe5e5;
+  --c-accent-line:#ffc9c9;
+  --radius:10px;
+}
+
+/* ===== Layout ===== */
+.sell-wrap{
+  max-width:760px;
+  margin:40px auto;
+  padding:0 20px;
+}
+.sell-card{
+  background:var(--c-bg);
+  border:1px solid var(--c-border);
+  border-radius:var(--radius);
+  padding:28px 28px 36px;
+  box-shadow:0 2px 10px rgba(0,0,0,.03);
+}
+.title{
+  font-weight:700;
+  font-size:22px;
+  text-align:center;
+  margin:6px 0 24px;
+  letter-spacing:.02em;
+}
+
+/* ===== Sections ===== */
+.sec{ margin-top:26px; }
+.sec h3{
+  font-size:14px;
+  color:var(--c-text);
+  margin:0 0 10px;
+  font-weight:700;
+}
+.divider{
+  height:1px;
+  background:var(--c-border-soft);
+  margin:18px 0;
+}
+
+/* ===== Image upload ===== */
+.image-drop{
+  border:1px dashed var(--c-border);
+  border-radius:var(--radius);
+  min-height:140px;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--c-bg-soft);
+  transition:border-color .2s, background-color .2s, box-shadow .2s;
+  text-align:center;
+  padding:16px;
+}
+.image-drop.is-dragover{
+  border-color:var(--c-accent);
+  background:#fff8f8;
+  box-shadow:0 0 0 4px rgba(255,118,118,.12) inset;
+}
+.image-btn{
+  display:inline-block;
+  background:var(--c-accent-weak);
+  color:#e64a4a;
+  border:1px solid var(--c-accent-line);
+  border-radius:9999px;
+  padding:10px 16px;
+  font-size:13px;
+  cursor:pointer;
+  transition:background-color .15s, transform .02s;
+  user-select:none;
+}
+.image-btn:hover{ background:#ffdede; }
+.image-btn:active{ transform:translateY(1px); }
+.image-btn:focus-visible{
+  outline:3px solid rgba(255,118,118,.35);
+  outline-offset:3px;
+}
+.image-input{ display:none; }
+
+.thumbs{
+  display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;
+}
+.thumbs img{
+  width:84px; height:84px; object-fit:cover;
+  border-radius:8px;
+  border:1px solid var(--c-border-soft);
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+
+/* ===== Chips ===== */
+.chips{ display:flex; gap:8px 10px; flex-wrap:wrap; }
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 12px;
+  border-radius:9999px;
+  border:1px solid var(--c-accent-line);
+  background:#fff5f5;
+  color:#e85a5a; font-size:12px; cursor:pointer;
+  transition:box-shadow .15s, background-color .15s, border-color .15s;
+}
+.chip:hover{ box-shadow:0 0 0 3px rgba(255,118,118,.12) inset; }
+.chip input{ display:none; }
+.chip input:checked + span{
+  background:#ff7d7d; color:#fff; border-color:#ff7d7d;
+  padding:6px 10px; border-radius:9999px;
+}
+
+/* ===== Inputs ===== */
+.input,.select,.textarea{
+  width:100%;
+  border:1px solid var(--c-border);
+  border-radius:8px;
+  padding:12px 12px;
+  font-size:14px;
+  background:#fff;
+  transition:border-color .15s, box-shadow .15s, background .15s;
+}
+.input:hover,.select:hover,.textarea:hover{
+  border-color:#d9d9d9;
+}
+.input:focus-visible,.select:focus-visible,.textarea:focus-visible{
+  outline:none;
+  border-color:var(--c-accent);
+  box-shadow:0 0 0 3px rgba(255,118,118,.18);
+}
+.textarea{ min-height:120px; resize:vertical; }
+
+/* invalid / disabled */
+.is-invalid{ border-color:var(--c-danger) !important; }
+.is-invalid:focus-visible{ box-shadow:0 0 0 3px rgba(214,57,57,.18); }
+.input:disabled,.select:disabled,.textarea:disabled{
+  background:#f7f7f7; color:#999; cursor:not-allowed;
+}
+
+/* Hint & error */
+.err{
+  color:var(--c-danger);
+  font-size:12px;
+  margin-top:6px;
+}
+.help{
+  color:#666; font-size:12px; margin-top:6px;
+}
+
+/* required badge (optional: <span class="req">必須</span>) */
+.req{
+  display:inline-block; margin-left:8px;
+  font-size:11px; line-height:1;
+  color:#fff; background:#ff9a9a;
+  padding:2px 6px; border-radius:9999px;
+  vertical-align:middle;
+}
+
+/* ===== Price (yen) ===== */
+.yen{ display:flex; align-items:center; gap:10px; }
+.yen span{ font-weight:700; color:#555; min-width:1.8em; }
+
+/* ===== Submit ===== */
+.submit{
+  width:240px; display:block; margin:28px auto 0;
+  background:var(--c-accent); border:none; color:#fff;
+  padding:12px 16px; border-radius:10px; font-weight:700;
+  cursor:pointer;
+  transition:filter .15s, transform .02s, box-shadow .15s;
+  box-shadow:0 4px 12px rgba(255,118,118,.25);
+}
+.submit:hover{ filter:brightness(1.03); }
+.submit:active{ transform:translateY(1px); }
+.submit:disabled{
+  background:#ffb4b4; box-shadow:none; cursor:not-allowed;
+}
+
+/* ===== Small screens ===== */
+@media (max-width: 480px){
+  .sell-wrap{ margin:24px auto; padding:0 14px; }
+  .sell-card{ padding:20px 16px 24px; border-radius:12px; }
+  .title{ font-size:20px; margin-bottom:18px; }
+  .sec h3{ font-size:13px; }
+  .image-drop{ min-height:120px; }
+  .thumbs img{ width:76px; height:76px; }
+  .submit{ width:100%; margin-top:22px; }
+}
+
+/* ===== Reduce motion ===== */
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; }
+}
+
+/* ===== Header 固定レイアウト修正 ===== */
+.header__inner{
+  max-width:1280px;
+  margin:0 auto;
+  padding:10px clamp(12px, 2vw, 24px);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:nowrap;        /* ← 折り返し禁止 */
+}
+
+/* 左：ロゴ */
+.header__logo{
+  color:#fff; text-decoration:none;
+  display:flex; align-items:center; gap:8px;
+}
+
+/* 中央：検索（縮むように） */
+.header-search{
+  flex:1 1 420px;          /* 既存でOK */
+  min-width:0;             /* ← これが超重要：縮小を許可 */
+}
+.header-search input{
+  width:100%; height:36px; padding:0 12px;
+  border:1px solid #ddd; outline:none; border-radius:6px;
+  background:#fff; color:#111;
+  min-width:0;             /* 念のため */
+}
+
+/* 右：ナビ（右端に固定＆折り返し禁止） */
+.header-nav{
+  display:flex; align-items:center; gap:12px;
+  flex-wrap:nowrap;        /* ← 折り返し禁止 */
+  list-style:none; margin:0; padding:0;
+  margin-left:auto;        /* ← 右端へ押し出す */
+}
+
+/* 画面が狭い時の対策（検索を少しずつ縮める/最終的に隠す） */
+@media (max-width: 1100px){
+  .header-search{ flex-basis:320px; }
+}
+@media (max-width: 920px){
+  .header-search{ flex-basis:240px; }
+}
+@media (max-width: 780px){
+  .header-search{ display:none; }  /* ← どうしても落ちる時は非表示に */
+}

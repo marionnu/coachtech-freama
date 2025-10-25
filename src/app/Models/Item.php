@@ -19,7 +19,6 @@ class Item extends Model
     protected $fillable = [
         'user_id',
         'category_id',
-        'item_name',
         'name',          // ← item_name をやめて name に統一
         'brand_name',
         'price',
@@ -181,6 +180,11 @@ public function getCategoryNamesAttribute(): string
         return $this->categories()->pluck('name')->implode(' / ');
     }
     return $this->category()->value('name') ?? '';
+}
+
+public function getDisplayNameAttribute(): string
+{
+    return $this->name ?? $this->item_name ?? '';
 }
 
 }

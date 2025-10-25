@@ -10,11 +10,11 @@
   <div class="detail">
     <div class="detail__image">
       <img src="{{ $item->thumbnail_url ?? 'https://placehold.co/800x800?text=%E5%95%86%E5%93%81%E7%94%BB%E5%83%8F' }}"
-           alt="{{ $item->item_name }}">
+           alt="{{ $item->name ?? $item->item_name }}">
     </div>
 
     <div class="detail__info">
-      <h1 class="detail__title">{{ $item->item_name }}</h1>
+      <h1 class="detail__title">{{ $item->name ?? $item->item_name }}</h1>
 {{-- ↓ 見本どおり、タイトル直下に小さく表示 --}}
 <div class="brandline">ブランド：{{ $item->brand_name ?: '－' }}</div>
       <div class="brandline">{{ $item->brand_name ?? '-' }}</div>

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @push('styles')
-  <link rel="stylesheet" href="{{ asset('css/sell.css') }}">
+  <link rel="stylesheet"
+        href="{{ asset('css/sell.css') }}?v={{ filemtime(public_path('css/sell.css')) }}">
 @endpush
 
 @section('content')
@@ -12,6 +13,7 @@
     <form action="{{ route('items.store') }}" method="post" enctype="multipart/form-data">
       @csrf
 
+      <div class="form-grid"><!-- ★ 追加（2カラムのラッパー開始） -->
       {{-- 商品画像 --}}
       <div class="sec">
         <h3>商品画像</h3>
@@ -22,8 +24,6 @@
         <div id="preview" class="thumbs"></div>
         @error('images.*') <p class="err">{{ $message }}</p> @enderror
       </div>
-
-      <div class="divider"></div>
 
       {{-- 商品の詳細 --}}
       <div class="sec">
@@ -82,6 +82,7 @@
           </div>
           @error('price') <p class="err">{{ $message }}</p> @enderror
         </div>
+      </div>
       </div>
 
       <button class="submit">出品する</button>

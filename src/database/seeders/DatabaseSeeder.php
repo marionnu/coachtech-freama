@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
         CategorySeeder::class,
-        // 他のSeederがあればここに追記
+        TestItemsSeeder::class,
     ]);
 }
 }

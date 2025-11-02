@@ -8,7 +8,6 @@ class StoreItemCommentRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // ルートで auth を掛けている前提なので true でOK
         return true;
     }
 
@@ -21,7 +20,6 @@ class StoreItemCommentRequest extends FormRequest
 
     public function attributes(): array
     {
-        // エラーメッセージの :attribute を日本語に
         return ['body' => 'コメント'];
     }
 }

@@ -16,7 +16,6 @@ class CategorySeeder extends Seeder
         ];
 
         foreach ($names as $n) {
-            // name を正として登録（旧 category_name が残っていてもOK）
             Category::firstOrCreate(['name' => $n], ['category_name' => $n]);
         }
     }

@@ -9,7 +9,6 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
-/* ---------- Public ---------- */
 Route::get('/',            [ItemController::class, 'index'])->name('items.index');
 Route::get('/item/{item}', [ItemController::class, 'show'])->name('items.show');
 Route::get('/mylist', function () {
@@ -20,20 +19,16 @@ Route::get('/mylist', function () {
     return redirect()->route('items.index', ['tab' => 'mylist']);
 })->name('items.mylist');
 
-/* ---------- auth (※プロフィール編集は verified 不要) ---------- */
 Route::middleware(['auth'])->group(function () {
-    // ★ 登録直後に来られるよう verified を要求しない
     Route::get('/mypage/profile', [MyPageController::class, 'editProfile'])->name('mypage.profile.edit');
     Route::put('/mypage/profile', [MyPageController::class, 'updateProfile'])->name('mypage.profile.update');
-
-    // ★（任意）メール認証ルートの明示と完了後の遷移をプロフィールに固定
     Route::get('/email/verify', function () {
         return view('auth.verify-email');
     })->name('verification.notice');
 
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
-        return redirect()->route('mypage.profile.edit'); // 認証完了後はプロフィールへ
+        return redirect()->route('mypage.profile.edit');
     })->middleware(['signed'])->name('verification.verify');
 
     Route::post('/email/verification-notification', function (Request $request) {
@@ -42,14 +37,14 @@ Route::middleware(['auth'])->group(function () {
     })->name('verification.send');
 });
 
-/* ---------- auth ---------- */
 Route::middleware('auth')->group(function () {
     Route::post  ('/items/{item}/favorite', [FavoriteController::class, 'store' ])->name('items.favorite');
     Route::delete('/items/{item}/favorite', [FavoriteController::class, 'destroy'])->name('items.unfavorite');
     Route::post('/items/{item}/comments',   [CommentController::class, 'store'])->name('items.comments.store');
+    Route::get('/items/{item}/edit', [ItemController::class, 'edit'])->name('items.edit');
+    Route::put('/items/{item}',      [ItemController::class, 'update'])->name('items.update');
 });
 
-/* ---------- auth + verified ---------- */
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', fn () => redirect()->route('items.index', ['tab' => 'mylist']))->name('dashboard');
 
@@ -67,5 +62,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage.index');
 
-    // ★ 重複していた /mypage/profile の verified 版は削除
 });

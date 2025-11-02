@@ -1,14 +1,11 @@
-{{-- resources/views/purchase/create.blade.php など（あなたの create.blade.php） --}}
-
 @extends('layouts.app')
 
 @section('content')
 <div class="container purchase purchase-compact">
   <div class="grid">
 
-    {{-- ===== 左カラム ===== --}}
     <section class="grid__left">
-      {{-- 商品行 --}}
+
       <div class="product-row">
         <img src="{{ $item->thumbnail_url ?? asset('img/placeholder.png') }}"
              alt="{{ $item->name }}" class="product-thumb">
@@ -21,10 +18,8 @@
         </div>
       </div>
 
-      {{-- ← 見出しの下線はCSSで消す。区切り線はブロックの手前に置く --}}
       <hr class="sep">
 
-      {{-- 支払い方法 --}}
       <h3 class="section__title">支払い方法</h3>
       <form id="purchase-form" method="POST" action="{{ route('purchase.store', $item) }}">
         @csrf
@@ -40,7 +35,6 @@
 
       <hr class="sep">
 
-      {{-- 配送先 --}}
       <h3 class="section__title">配送先</h3>
       @php($u = auth()->user())
       <div class="address">
@@ -53,7 +47,6 @@
       </div>
     </section>
 
-    {{-- ===== 右サマリー ===== --}}
     <aside>
       <div class="summary">
         <div class="summary__row">
@@ -66,7 +59,6 @@
         </div>
       </div>
 
-      {{-- @disabled をプレーン属性に置き換え（文字化対策） --}}
       <button
         form="purchase-form"
         class="btn-buy"

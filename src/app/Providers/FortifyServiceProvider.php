@@ -24,7 +24,7 @@ class FortifyServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        // 登録直後は必ずメール認証画面へ
+
     $this->app->singleton(RegisterResponse::class, function () {
         return new class implements RegisterResponse {
             public function toResponse($request)
@@ -34,7 +34,6 @@ class FortifyServiceProvider extends ServiceProvider
         };
     });
 
-    // ログイン直後は intended or HOME（/dashboard）へ
     $this->app->singleton(LoginResponse::class, function () {
         return new class implements LoginResponse {
             public function toResponse($request)
@@ -59,9 +58,7 @@ class FortifyServiceProvider extends ServiceProvider
 
     Fortify::verifyEmailView(fn() => view('auth.verify-email'));
 
-    // ここを追加 ↓↓↓
     Fortify::authenticateUsing(function (Request $request) {
-        // LoginRequestのルールでバリデーション
         $loginRequest = new LoginRequest();
         Validator::make(
             $request->all(),
@@ -76,7 +73,6 @@ class FortifyServiceProvider extends ServiceProvider
         }
         return null;
     });
-    // ↑↑↑ ここまで追加
 
     RateLimiter::for('login', function (Request $request) {
         $email = (string) $request->email;

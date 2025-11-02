@@ -1,4 +1,3 @@
-/* ===== Theme Vars ===== */
 :root{
   --c-border:#e6e6e6;
   --c-border-soft:#eee;
@@ -12,7 +11,6 @@
   --radius:10px;
 }
 
-/* ===== Layout ===== */
 .sell-wrap{
   max-width:760px;
   margin:40px auto;
@@ -33,7 +31,6 @@
   letter-spacing:.02em;
 }
 
-/* ===== Sections ===== */
 .sec{ margin-top:26px; }
 .sec h3{
   font-size:14px;
@@ -47,7 +44,6 @@
   margin:18px 0;
 }
 
-/* ===== Image upload ===== */
 .image-drop{
   border:1px dashed var(--c-border);
   border-radius:var(--radius);
@@ -93,7 +89,6 @@
   box-shadow:0 1px 2px rgba(0,0,0,.04);
 }
 
-/* ===== Chips ===== */
 .chips{ display:flex; gap:8px 10px; flex-wrap:wrap; }
 .chip{
   display:inline-flex; align-items:center; gap:6px;
@@ -111,7 +106,6 @@
   padding:6px 10px; border-radius:9999px;
 }
 
-/* ===== Inputs ===== */
 .input,.select,.textarea{
   width:100%;
   border:1px solid var(--c-border);
@@ -131,14 +125,12 @@
 }
 .textarea{ min-height:120px; resize:vertical; }
 
-/* invalid / disabled */
 .is-invalid{ border-color:var(--c-danger) !important; }
 .is-invalid:focus-visible{ box-shadow:0 0 0 3px rgba(214,57,57,.18); }
 .input:disabled,.select:disabled,.textarea:disabled{
   background:#f7f7f7; color:#999; cursor:not-allowed;
 }
 
-/* Hint & error */
 .err{
   color:var(--c-danger);
   font-size:12px;
@@ -148,7 +140,6 @@
   color:#666; font-size:12px; margin-top:6px;
 }
 
-/* required badge (optional: <span class="req">必須</span>) */
 .req{
   display:inline-block; margin-left:8px;
   font-size:11px; line-height:1;
@@ -157,11 +148,9 @@
   vertical-align:middle;
 }
 
-/* ===== Price (yen) ===== */
 .yen{ display:flex; align-items:center; gap:10px; }
 .yen span{ font-weight:700; color:#555; min-width:1.8em; }
 
-/* ===== Submit ===== */
 .submit{
   width:240px; display:block; margin:28px auto 0;
   background:var(--c-accent); border:none; color:#fff;
@@ -176,7 +165,6 @@
   background:#ffb4b4; box-shadow:none; cursor:not-allowed;
 }
 
-/* ===== Small screens ===== */
 @media (max-width: 480px){
   .sell-wrap{ margin:24px auto; padding:0 14px; }
   .sell-card{ padding:20px 16px 24px; border-radius:12px; }
@@ -187,12 +175,10 @@
   .submit{ width:100%; margin-top:22px; }
 }
 
-/* ===== Reduce motion ===== */
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; }
 }
 
-/* ===== Header 固定レイアウト修正 ===== */
 .header__inner{
   max-width:1280px;
   margin:0 auto;
@@ -200,36 +186,31 @@
   display:flex;
   align-items:center;
   gap:16px;
-  flex-wrap:nowrap;        /* ← 折り返し禁止 */
-}
+  flex-wrap:nowrap;
 
-/* 左：ロゴ */
 .header__logo{
   color:#fff; text-decoration:none;
   display:flex; align-items:center; gap:8px;
 }
 
-/* 中央：検索（縮むように） */
 .header-search{
-  flex:1 1 420px;          /* 既存でOK */
-  min-width:0;             /* ← これが超重要：縮小を許可 */
+  flex:1 1 420px;
+  min-width:0;
 }
 .header-search input{
   width:100%; height:36px; padding:0 12px;
   border:1px solid #ddd; outline:none; border-radius:6px;
   background:#fff; color:#111;
-  min-width:0;             /* 念のため */
+  min-width:0;
 }
 
-/* 右：ナビ（右端に固定＆折り返し禁止） */
 .header-nav{
   display:flex; align-items:center; gap:12px;
-  flex-wrap:nowrap;        /* ← 折り返し禁止 */
+  flex-wrap:nowrap;
   list-style:none; margin:0; padding:0;
-  margin-left:auto;        /* ← 右端へ押し出す */
+  margin-left:auto;
 }
 
-/* 画面が狭い時の対策（検索を少しずつ縮める/最終的に隠す） */
 @media (max-width: 1100px){
   .header-search{ flex-basis:320px; }
 }
@@ -237,5 +218,6 @@
   .header-search{ flex-basis:240px; }
 }
 @media (max-width: 780px){
-  .header-search{ display:none; }  /* ← どうしても落ちる時は非表示に */
+  .header-search{ display:none; }
+}
 }

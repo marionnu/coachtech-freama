@@ -90,7 +90,6 @@
         @endforelse
       </section>
 
-      {{-- ======== 商品へのコメント ======== --}}
       <section class="section">
         <h2 class="section__title">商品のコメント</h2>
 

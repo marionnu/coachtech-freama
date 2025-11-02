@@ -21,7 +21,6 @@
 <div class="container container--wide">
   @if($items->count() === 0)
     @if(!empty($suppressEmptyMessage))
-      {{-- 未認証ユーザーのマイリスト：何も表示しない --}}
     @elseif(request()->filled('q'))
       <p>「{{ request('q') }}」に一致する商品が見つかりません。</p>
     @elseif(($activeTab ?? 'recommend') === 'mylist')

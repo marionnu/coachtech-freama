@@ -17,18 +17,15 @@
   @php($isAuthPage = request()->routeIs('login','register','password.*','verification.*'))
   <header class="header">
   <div class="header__inner">
-    {{-- 左：ロゴ（SVGに差し替え） --}}
     <a class="header__logo" href="{{ route('items.index') }}" aria-label="COACHTECH">
       <img src="{{ asset('svg/logo.svg') }}" alt="COACHTECH" class="header__logo-img">
     </a>
 
-    {{-- 中央：検索 --}}
 @unless($isAuthPage)
   <form action="{{ route('items.index') }}" method="get" class="header-search" role="search">
     <input type="search" name="q" value="{{ request('q') }}" placeholder="なにをお探しですか？" aria-label="検索">
   </form>
 
-  {{-- 右：ナビ --}}
   <nav class="header-nav" aria-label="グローバル">
     <ul class="header-nav__list">
       @auth
@@ -53,7 +50,6 @@
 </header>
 
   <main>
-    {{-- ★ フラッシュメッセージ（購入成功/キャンセル、住所更新など） --}}
     @if (session('success'))
       <div class="flash flash--success">{{ session('success') }}</div>
     @endif

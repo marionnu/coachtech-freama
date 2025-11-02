@@ -8,17 +8,14 @@
         メール認証を完了してください。
     </p>
 
-    {{-- ★ 変更：赤い有効ボタンに（共通 btn-primary を使用） --}}
     <a href="#" class="btn-primary" style="display:inline-block;">認証はこちらから</a>
 
-    {{-- ステータスメッセージ --}}
     @if (session('status') === 'verification-link-sent')
         <p style="color: green; margin-top: 20px;">
             認証メールを再送しました。受信箱を確認してください。
         </p>
     @endif
 
-    {{-- 認証メール再送 --}}
     <form method="POST" action="{{ route('verification.send') }}" style="margin-top: 20px;">
         @csrf
         <button type="submit" style="background: none; border: none; color: #3490dc; text-decoration: underline; cursor: pointer;">

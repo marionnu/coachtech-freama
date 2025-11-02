@@ -12,9 +12,9 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'                  => ['required','string','max:20'],   // 20文字以内
+            'name'                  => ['required','string','max:20'],
             'email'                 => ['required','string','email','max:255','unique:users,email'],
-            'password'              => ['required','string','min:8','confirmed'], // 確認一致
+            'password'              => ['required','string','min:8','confirmed'],
             'password_confirmation' => ['required','string','min:8'],
         ];
     }

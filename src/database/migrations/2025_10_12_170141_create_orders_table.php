@@ -10,13 +10,12 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->foreignId('buyer_id')->constrained('users')->cascadeOnDelete();
-            $table->unsignedInteger('price');            // 決済金額（円）
-            $table->tinyInteger('payment_method');       // 1:コンビニ 2:カード（仕様書に合わせてtinyint）
-            $table->enum('status', ['pending','paid','canceled'])->default('pending'); // 追加推奨
-            $table->string('stripe_session_id')->nullable();       // 追加推奨（将来のStripe用）
-            $table->string('stripe_payment_intent')->nullable();   // 追加推奨
+            $table->unsignedInteger('price');
+            $table->tinyInteger('payment_method');
+            $table->enum('status', ['pending','paid','canceled'])->default('pending');
+            $table->string('stripe_session_id')->nullable();
+            $table->string('stripe_payment_intent')->nullable();
             $table->timestamps();
-
             $table->index(['buyer_id','status']);
         });
     }

@@ -13,7 +13,6 @@ class PurchaseController extends Controller
 {
     public function __construct(){ $this->middleware('auth'); }
 
-    // 購入画面
     public function create(Item $item)
     {
         $user = Auth::user();
@@ -23,7 +22,6 @@ class PurchaseController extends Controller
         return view('purchase.create', ['item' => $item, 'user' => $user]);
     }
 
-    // 「購入する」
     public function store(Request $request, Item $item)
     {
         $user = Auth::user();
@@ -68,11 +66,10 @@ class PurchaseController extends Controller
             return redirect($session->url);
         }
 
-        // Stripe未設定：即時確定
         DB::transaction(function () use ($item, $order) {
             $order->update(['status' => 'paid']);
-            $item->sold_at = now();   // ← 修正点
-            $item->save();            // ← 修正点
+            $item->sold_at = now();
+            $item->save();
         });
 
         return redirect()
@@ -80,13 +77,11 @@ class PurchaseController extends Controller
             ->with('success', '購入が完了しました。ありがとうございます！');
     }
 
-    // 送付先住所変更（表示）
     public function editAddress(Item $item)
     {
         return view('purchase.address', ['item' => $item, 'user' => Auth::user()]);
     }
 
-    // 送付先住所変更（更新）
     public function updateAddress(Request $request, Item $item)
     {
         $data = $request->validate([
@@ -105,7 +100,6 @@ class PurchaseController extends Controller
         return redirect()->route('purchase.create', $item)->with('success', '住所を更新しました。');
     }
 
-    // 決済成功
     public function success(Request $request, Item $item)
     {
         if ($request->filled('session_id') && config('services.stripe.secret')) {
@@ -116,8 +110,8 @@ class PurchaseController extends Controller
             if ($order && $order->status !== 'paid') {
                 DB::transaction(function () use ($order, $item) {
                     $order->update(['status' => 'paid']);
-                    $item->sold_at = now();   // ← 修正点
-                    $item->save();            // ← 修正点
+                    $item->sold_at = now();
+                    $item->save();
                 });
             }
         }
@@ -125,7 +119,6 @@ class PurchaseController extends Controller
         return redirect()->route('items.show', $item)->with('success', '購入が完了しました。ありがとうございます！');
     }
 
-    // キャンセル
     public function cancel(Item $item)
     {
         return redirect()->route('purchase.create', $item)->with('error', '決済がキャンセルされました。');

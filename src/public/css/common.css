@@ -1,6 +1,4 @@
-/* ===== Header ===== */
 .header { background:#000; color:#fff; }
-
 .header__inner{
   max-width:1280px;
   margin:0 auto;
@@ -9,55 +7,96 @@
   align-items:center;
   gap:16px;
 }
-
-/* 左：ロゴ */
 .header__logo{
-  color:#fff; text-decoration:none;
-  display:flex; align-items:center; gap:8px;
+  color:#fff;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-
-/* 中央：検索 */
-.header-search{ flex:1 1 420px; min-width:180px; }
+.header-search{
+  flex:1 1 420px;
+  min-width:180px;
+}
 .header-search input{
-  width:100%; height:36px; padding:0 12px;
-  border:1px solid #ddd; outline:none; border-radius:6px;
-  background:#fff; color:#111;
+  width:100%;
+  height:36px;
+  padding:0 12px;
+  border:1px solid #ddd;
+  outline:none;
+  border-radius:6px;
+  background:#fff;
+  color:#111;
 }
-.header-search input::placeholder { color:#666; }
+.header-search input::placeholder {
+  color:#666;
+}
 
-/* 右：ナビ */
 .header-nav{
-  display:flex; align-items:center; gap:12px;
-  flex-wrap:wrap; list-style:none; margin:0; padding:0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  list-style:none;
+  margin:0;
+  padding:0;
 }
 .header-nav__list{
-  display:flex; align-items:center; gap:12px;
-  flex-wrap:wrap; list-style:none; margin:0; padding:0;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  list-style:none;
+  margin:0;
+  padding:0;
 }
-.header-nav li { white-space:nowrap; }
-.header-nav a{ color:#fff; text-decoration:none; }
+.header-nav li {
+  white-space:nowrap;
+}
+.header-nav a{
+  color:#fff;
+  text-decoration:none;
+}
 
-/* ログアウトをリンク風に */
-.inline-form{ display:inline; }
-.linklike{ background:none; border:none; color:#fff; cursor:pointer; padding:0; font:inherit; }
+.inline-form{
+  display:inline;
+}
+.linklike{
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+  padding:0;
+  font:inherit;
+}
 
-/* 出品ボタン：ヘッダー上は白枠・透過 */
 .btn-outline{
-  border:1px solid #111; color:#111;
-  padding:6px 12px; border-radius:4px;
-  text-decoration:none; background:transparent;
+  border:1px solid #111;
+  color:#111;
+  padding:6px 12px;
+  border-radius:4px;
+  text-decoration:none;
+  background:transparent;
   transition:background .15s,color .15s,border-color .15s;
 }
-.btn-outline:hover{ background:#111; color:#fff; }
-.header .btn-outline{ border-color:#fff; color:#fff; background:transparent; }
-.header .btn-outline:hover{ background:#fff; color:#000; }
+.btn-outline:hover{
+  background:#111;
+  color:#fff;
+}
+.header .btn-outline{
+  border-color:#fff;
+  color:#fff;
+  background:transparent;
+}
+.header .btn-outline:hover{
+  background:#fff;
+  color:#000;
+}
 
-/* ===== Flash ===== */
 .flash{ margin:16px auto; max-width:960px; padding:12px 16px; border-radius:8px; }
 .flash--success{ background:#e6ffed; border:1px solid #a3e7b5; color:#065f46; }
 .flash--error  { background:#ffecec; border:1px solid #ffb3b3; color:#7f1d1d; }
 
-/* ===== Purchase ===== */
 .container.purchase{ max-width:1100px; margin:20px auto; padding:0 16px; }
 .page-title{ font-size:18px; font-weight:700; margin:8px 0 14px; }
 .grid{ display:grid; grid-template-columns: 1fr 320px; gap:24px; }
@@ -93,7 +132,6 @@
   .grid{ grid-template-columns: 1fr; }
 }
 
-/* ===== Address Edit / 共通フォーム ===== */
 .container.address-edit{ max-width:980px; margin:24px auto; padding:0 16px; }
 .page-title.center { text-align:center; font-weight:700; margin:8px 0 18px; }
 
@@ -113,7 +151,6 @@
   display:flex; gap:12px; justify-content:center; margin-top:12px;
 }
 
-/* 汎用プライマリボタン（ワイド） */
 .btn-primary{
   background:#ff6b6b; color:#fff; border:none; border-radius:6px;
   padding:12px 24px; font-weight:700; cursor:pointer; text-decoration:none; display:inline-block;
@@ -121,7 +158,6 @@
 }
 .btn-primary:disabled{ opacity:.5; cursor:not-allowed; }
 
-/* ===== purchase page only ===== */
 .purchase-compact .product-thumb{ width:80px; height:80px; object-fit:cover; }
 .purchase-compact .product-name{ font-size:14px; font-weight:700; line-height:1.4; }
 .purchase-compact .product-price{ font-size:14px; font-weight:700; color:#111; }
@@ -132,7 +168,6 @@
 .purchase-compact [form="purchase-form"]{ height:44px; font-size:14px; padding:0 12px; }
 .purchase-compact a.text-blue-600{ font-size:12px; }
 
-/* ===== SOLD badge ===== */
 .badge--sold,
 .sold-badge{
   position:absolute; top:8px; left:8px;
@@ -142,10 +177,8 @@
 .img--dim{ filter:grayscale(1) brightness(.9); }
 .card--product.is-sold .thumb img{ filter:grayscale(1) brightness(.9); }
 
-/* 画像ロゴ */
 .header__logo img, .header__logo-img{ height:24px; width:auto; display:block; }
 
-/* ===== Breakpoints ===== */
 @media (max-width: 820px){
   .header__inner { flex-wrap: wrap; }
   .header-search { order: 3; flex: 1 1 100%; }
@@ -155,10 +188,8 @@
   .header__inner { max-width:1280px; }
 }
 
-/* 共通コンテナ */
 .container{ max-width:1280px; margin:0 auto; padding:0 16px; }
 
-/* ログイン／登録ページ用 */
 .login-form__content{
   max-width:560px; margin:48px auto 80px;
   background:#fff; padding:32px 28px; border-radius:8px;
@@ -169,59 +200,46 @@
   width:560px; max-width:100%;
 }
 
-/* ===== Profile page only ===== */
 .page--profile .header-search{ flex: 0 1 360px; min-width:200px; }
 
-/* アバター（画像無しは数字を出さない灰丸） */
 .avatar-row{ display:flex; align-items:center; gap:16px; margin-bottom:16px; }
 .avatar-ph{ width:72px; height:72px; border-radius:50%; background:#ddd; }
 
-/* 画像アップロードボタンを小さめの赤ピルに（全幅化を抑止） */
 .page--profile .btn-upload.btn-primary{
   width:auto; padding:6px 10px; border-radius:9999px; line-height:1; font-size:12px;
 }
 
-/* 入力欄と「更新する」ボタンの幅を一致させる */
 .page--profile .form-vert input{ max-width:520px; }
 .page--profile .form-actions .btn-primary{ width:520px; }
 
-/* =========================
-   Profile 見本寄せ（CSSだけで調整）
-   ========================= */
-
-/* 1) 細い中央カラムにする */
 .page--profile .card{
-  max-width: 420px;       /* 720px → 420px */
+  max-width: 420px;
   padding: 20px;
 }
 
-/* 入力欄はカード幅いっぱいで統一 */
 .page--profile .form-vert input{
-  max-width: 100%;        /* 520px 制限を解除して揃える */
+  max-width: 100%;
   height: 38px;
 }
 
-/* ラベルや余白を見本の雰囲気に */
 .page--profile .form-vert .form-group{ margin-bottom: 16px; }
 .page--profile .form-vert label{
   font-weight: 700;
-  font-size: 12px;        /* 少し小さめに */
+  font-size: 12px;
   margin-bottom: 6px;
   color: #333;
 }
 
-/* 2) アバターを中央配置＋右上に小ボタン（HTMLはそのまま） */
 .page--profile .avatar-row{
   position: relative;
-  display: block;         /* 既存のflexを打ち消し、縦に */
+  display: block;
   width: 96px;
-  margin: 0 auto 18px;    /* 中央寄せ */
-  gap: 0;                 /* 念のため */
+  margin: 0 auto 18px;
+  gap: 0;
 }
 
-/* アバター画像・プレースホルダを同サイズの丸に */
 .page--profile .avatar-row img{
-  width: 96px !important;   /* インラインstyle(72px)を上書き */
+  width: 96px !important;
   height: 96px !important;
   border-radius: 50%;
   object-fit: cover;
@@ -232,7 +250,6 @@
   width: 96px; height: 96px; border-radius: 50%; background: #eee;
 }
 
-/* 右上に乗る小さめピルボタン */
 .page--profile .btn-upload.btn-primary{
   position: absolute;
   top: 6px;
@@ -242,7 +259,7 @@
   border-radius: 9999px;
   line-height: 1;
   font-size: 12px;
-  background: #fff;              /* 見本は白地に赤フチ・赤文字 */
+  background: #fff;
   color: #ff8a8a;
   border: 1px solid #ff8a8a;
 }
@@ -250,20 +267,17 @@
   background: #fff5f5;
 }
 
-/* 3) 「更新する」ボタンは中央の固定幅に */
 .page--profile .form-actions{
   justify-content: center;
 }
 .page--profile .form-actions .btn-primary{
-  width: 320px;            /* 細長ボタン */
+  width: 320px;
   max-width: 100%;
   display: block;
   margin: 22px auto 0;
   height: 44px;
   font-weight: 700;
 }
-
-/* アバター上に小ボタンを配置（重なり防止） */
 .page--profile .avatar-row{
   position: relative;
   display: block;
@@ -271,23 +285,20 @@
   margin: 0 auto 18px;
 }
 
-/* 中央上に浮かせて、丸と6px離す */
 .page--profile .btn-upload.btn-primary{
   position: absolute;
   top: -8px;
   right: -8px;
   transform: none;
-  /* 以下は同じ */
 }
 
 .page--profile .btn-upload.btn-primary:hover{ background:#fff5f5; }
 
-/* --- Profile: アップロードボタンを丸のすぐ上・中央に固定 --- */
 .page--profile .avatar-row{
   position: relative;
   display: block;
   width: 96px;
-  height: 96px;                 /* 高さも持たせて基準にする */
+  height: 96px;
   margin: 0 auto 18px;
 }
 
@@ -301,21 +312,17 @@
   display: block;
 }
 
-/* === Profile: アバターの右に「画像を選択する」ボタンを横並び表示 === */
-
-/* 親を横フレックスにして中央寄せ。重なり防止でpositionは通常フロー */
 .page--profile .avatar-row{
   display: flex !important;
   flex-direction: row;
-  align-items: center;         /* ボタンと丸の縦位置を中央で揃える */
+  align-items: center;
   justify-content: center;
-  gap: 12px;                   /* 丸とボタンの間隔（好みで 8〜16px） */
+  gap: 12px;
   width: fit-content;
-  margin: 0 auto 18px;         /* ブロック全体を中央に */
-  position: static !important; /* 以前の relative 指定を打ち消し */
+  margin: 0 auto 18px;
+  position: static !important;
 }
 
-/* 画像サイズを統一（インライン72pxを上書き） */
 .page--profile .avatar-row img,
 .page--profile .avatar-row .avatar-ph{
   width: 96px !important;
@@ -326,10 +333,9 @@
   display: block;
 }
 
-/* ボタンは通常フローに。見た目は小さめピル */
 .page--profile .avatar-row .btn-upload.btn-primary{
-  order: 0;                         /* 丸の右側（順番そのままなら不要） */
-  position: static !important;      /* 位置指定を完全に解除 */
+  order: 0;
+  position: static !important;
   top: auto !important;
   right: auto !important;
   bottom: auto !important;
@@ -346,27 +352,23 @@
   color: #ff8a8a;
   border: 1px solid #ff8a8a;
   white-space: nowrap;
-  margin: 0;                          /* 余白はgapで管理 */
+  margin: 0;
 }
 .page--profile .avatar-row .btn-upload.btn-primary:hover{
   background:#fff5f5;
 }
 
-/* ===== Pagination compact ===== */
-/* 1) 「Showing 1 to ...」のテキストを隠す（Tailwind/Bootstrap両対応） */
 nav[role="navigation"] > p,
 nav[role="navigation"] > div:first-child {
   display: none !important;
 }
 
-/* 2) ナビ自体を中央＆コンパクト */
 nav[role="navigation"] {
   display: flex;
   justify-content: center;
   margin: 16px 0;
 }
 
-/* 3) ボタンの基本形（Bootstrapの .pagination があればそれを使い、なければ下の a/span を拾う） */
 nav[role="navigation"] .pagination {
   display: inline-flex;
   gap: 6px;
@@ -389,7 +391,6 @@ nav[role="navigation"] span {
   line-height: 1;
 }
 
-/* 4) 状態 */
 nav[role="navigation"] .active > .page-link,
 nav[role="navigation"] span[aria-current="page"] {
   background: #ff6b6b; color: #fff; border-color: #ff6b6b;
@@ -399,12 +400,10 @@ nav[role="navigation"] span[aria-disabled="true"] {
   opacity: .4; pointer-events: none;
 }
 
-/* 5) 矢印アイコンを小さく（全体のSVG拡大の影響を打ち消す） */
 nav[role="navigation"] svg {
   width: 16px; height: 16px;
 }
 
-/* 画面下に常時固定する例（必要なら） */
 .pg { position: sticky; bottom: 0; background:#fff; padding:8px 0; }
 
 .page--items nav[role="navigation"]{
@@ -415,26 +414,23 @@ nav[role="navigation"] svg {
 }
 .page--items{ padding-bottom: 80px; }
 
-/* 見出しの下線は表示しない（購入ページだけ） */
 .purchase-compact .section__title{
   border-bottom: none !important;
   padding-bottom: 0 !important;
   margin-bottom: 10px !important;
 }
 
-/* 区切り線のトーンは見本寄せ（薄いグレー） */
 .purchase-compact .sep{
   border: 0;
   border-top: 1px solid #e5e5e5;
   margin: 14px 0;
 }
 
-/* ===== Address page only (scoped) ===== */
 .page--address .page-title.center{
   margin: 14px 0 20px;
 }
 .page--address .card{
-  max-width: 420px;           /* 720px -> 420px で細カラム */
+  max-width: 420px;
   padding: 20px;
   margin: 0 auto;
 }
@@ -442,14 +438,14 @@ nav[role="navigation"] svg {
   margin-bottom: 16px;
 }
 .page--address .form-vert input{
-  max-width: 100%;            /* 520px 制限を解除してカード幅いっぱい */
+  max-width: 100%;
   height: 38px;
 }
 .page--address .form-actions{
   justify-content: center;
 }
 .page--address .form-actions .btn-primary{
-  width: 320px;               /* 見本の細長ボタン */
+  width: 320px;
   height: 44px;
   display: block;
   margin: 18px auto 0;

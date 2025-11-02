@@ -7,19 +7,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserProfile extends Model
 {
-    // 主キーは user_id（auto increment ではない）
+
     protected $primaryKey = 'user_id';
     public $incrementing = false;
 
     protected $fillable = [
         'user_id',
-        'path',         // アイコン等（任意）
+        'path',
         'postal_code',
         'address',
         'building',
     ];
 
-    // 住所の便利アクセサ
     public function getFullAddressAttribute(): string
     {
         $zip = $this->postal_code ? "〒{$this->postal_code} " : '';

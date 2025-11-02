@@ -7,7 +7,6 @@
 @section('content')
 <div class="container container--wide">
 
-  {{-- ヘッダ（ユーザー名＋編集ボタン） --}}
   <div style="display:flex;align-items:center;gap:16px;margin:12px 0 20px;">
     <img src="{{ $user->avatar_url ?? 'https://placehold.co/80x80?text=%20' }}"
          alt="" style="width:64px;height:64px;border-radius:50%;object-fit:cover;">
@@ -15,7 +14,6 @@
     <a href="{{ route('mypage.profile.edit') }}" class="btn-outline" style="margin-left:auto;">プロフィールを編集</a>
   </div>
 
-  {{-- タブ（出品／購入） --}}
   <div class="tabs">
     <a class="tab {{ $tab==='sell' ? 'tab--active' : '' }}"
        href="{{ route('mypage.index', ['page'=>'sell']) }}">出品した商品</a>

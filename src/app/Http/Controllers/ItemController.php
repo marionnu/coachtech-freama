@@ -34,7 +34,6 @@ class ItemController extends Controller
                 ->when($keyword !== '', function ($q) use ($keyword) {
                     $q->where(function($q) use($keyword){
                         $q->where('name', 'like', "%{$keyword}%");
-                        // $q->orWhere('brand_name', 'like', "%{$keyword}%");
                     });
                 })
                 ->when(auth()->check(), function ($q) {
@@ -49,7 +48,6 @@ class ItemController extends Controller
                 ->withCount('favorites')
                 ->when($keyword !== '', function ($q) use ($keyword) {
                     $q->where('name', 'like', "%{$keyword}%");
-                    // $q->orWhere('brand_name', 'like', "%{$keyword}%");
                 })
                 ->when(auth()->check(), function ($q) {
                     $q->where('user_id', '!=', auth()->id());
@@ -93,21 +91,19 @@ class ItemController extends Controller
 
     public function store(StoreItemRequest $request)
     {
-        // categories[] の先頭を items.category_id にも入れる（単一列を保持）
         $primaryCategoryId = collect($request->input('categories', []))->filter()->first();
 
         DB::transaction(function () use ($request, $primaryCategoryId) {
             $item = Item::create([
                 'user_id'     => $request->user()->id,
-                'category_id' => $primaryCategoryId,     // ← 単一列
-                'name'        => $request->name,         // ← item_name は使わない
+                'category_id' => $primaryCategoryId,
+                'name'        => $request->name,
                 'brand_name'  => $request->brand_name,
-                'description' => $request->description,
+                'description' => (string) $request->input('description', ''),
                 'price'       => $request->price,
                 'condition'   => $request->condition,
             ]);
 
-            // 多対多カテゴリ（中間テーブル）も保持
             $categoryIds = collect($request->input('categories', []))
                 ->filter()
                 ->unique()
@@ -115,7 +111,6 @@ class ItemController extends Controller
                 ->all();
             $item->categories()->sync($categoryIds);
 
-            // 画像保存
             if ($request->hasFile('images')) {
                 foreach ($request->file('images') as $i => $file) {
                     $path = $file->store('items','public');
@@ -129,5 +124,10 @@ class ItemController extends Controller
         });
 
         return redirect()->route('items.index')->with('success','商品を出品しました');
+    }
+    public function edit(Item $item)
+    {
+        $this->authorize('update', $item);
+        return response('ok');
     }
 }

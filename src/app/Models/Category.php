@@ -13,7 +13,6 @@ class Category extends Model
         'name',
     ];
 
-    // リレーション
     public function items()
     {
         return $this->belongsToMany(Item::class, 'category_item')->withTimestamps();

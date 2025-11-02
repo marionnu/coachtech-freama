@@ -1,4 +1,3 @@
-/* ===== Register (見本寄せ) ===== */
 .register-form__content{
   max-width: 560px;
   margin: 48px auto 80px;
@@ -17,7 +16,6 @@
   margin: 0;
 }
 
-/* フォーム本体はカード内で100%幅に */
 .form{
   width: 100%;
   margin: 0 auto;
@@ -45,7 +43,7 @@
   outline: none;
 }
 .form__input--text input:focus{
-  border-color: #ff6b6b;                    /* アクセント色 */
+  border-color: #ff6b6b;
   box-shadow: 0 0 0 2px rgba(255,107,107,.15);
 }
 
@@ -57,11 +55,9 @@
   text-align: left;
 }
 
-/* ボタン行：赤のワイドは共通 .btn-primary / .btn-wide を活用 */
 .form__button{ margin-top: 20px; }
-.form__button-submit{ width: 560px; max-width: 100%; }  /* 幅を見本サイズに */
+.form__button-submit{ width: 560px; max-width: 100%; }
 
-/* ログインリンク */
 .login__link{
   margin-top: 14px;
   text-align: center;
@@ -72,7 +68,6 @@
   font-size: 13px;
 }
 
-/* スマホ微調整 */
 @media (max-width: 480px){
   .register-form__content{
     margin: 32px auto 56px;

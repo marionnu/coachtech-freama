@@ -1,4 +1,3 @@
-/* ===== Login (見本寄せ) ===== */
 .login-form__content{
   max-width: 560px;
   margin: 48px auto 80px;
@@ -17,11 +16,10 @@
   margin: 0;
 }
 
-/* フォーム本体は幅いっぱいでOK（25%は狭すぎる） */
 .form{
   width: 100%;
   margin: 0 auto;
-  text-align: left;  /* 入力欄は左寄せの方が見本っぽい */
+  text-align: left;
 }
 
 .form__group{ margin-bottom: 14px; }
@@ -45,24 +43,20 @@
   outline: none;
 }
 .form__input--text input:focus{
-  border-color: #ff6b6b;            /* 見本のアクセントに合わせる */
+  border-color: #ff6b6b;
   box-shadow: 0 0 0 2px rgba(255,107,107,.15);
 }
 
 .form__error{
-  min-height: 18px;                 /* 行送り安定 */
+  min-height: 18px;
   color: #c00;
   font-size: 12px;
   margin-top: 6px;
   text-align: left;
 }
 
-/* ボタン行：common.css の .btn-primary / .btn-wide を活かす */
 .form__button{ margin-top: 20px; }
-/* もし .form__button-submit に個別見た目が必要なら上書きを追加：
-.form__button-submit{ } */
 
-/* 会員登録リンク */
 .register__link{
   margin-top: 14px;
   text-align: center;
@@ -73,7 +67,6 @@
   font-size: 13px;
 }
 
-/* スマホ余白微調整 */
 @media (max-width: 480px){
   .login-form__content{
     margin: 32px auto 56px;

@@ -8,9 +8,6 @@ return new class extends Migration {
     public function up(): void
     {
         if (!Schema::hasTable('category_item')) return;
-
-        // 1) item_id 単独に付いている UNIQUE を全部探して落とす
-        //    （インデックス名が何であっても検出してDROP）
         $rows = DB::select("
             SELECT INDEX_NAME
             FROM INFORMATION_SCHEMA.STATISTICS
@@ -26,7 +23,6 @@ return new class extends Migration {
             DB::statement("ALTER TABLE category_item DROP INDEX `{$name}`");
         }
 
-        // 2) 期待する複合一意 (item_id, category_id) が無ければ追加
         $exists = DB::select("
             SELECT 1
             FROM INFORMATION_SCHEMA.STATISTICS
@@ -46,8 +42,6 @@ return new class extends Migration {
     public function down(): void
     {
         if (!Schema::hasTable('category_item')) return;
-
-        // 複合一意だけ戻す（無ければ何もしない）
         $exists = DB::select("
             SELECT 1
             FROM INFORMATION_SCHEMA.STATISTICS
@@ -62,7 +56,5 @@ return new class extends Migration {
                 DROP INDEX category_item_item_category_unique
             ");
         }
-
-        // ※ 元の「item_id単独UNIQUE」までは復元しません（通常不要なため）
     }
 };

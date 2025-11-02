@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCategoryItemTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
 {
     Schema::create('category_item', function (Blueprint $table) {
@@ -25,5 +20,4 @@ public function down()
 {
     Schema::dropIfExists('category_item');
 }
-
 }

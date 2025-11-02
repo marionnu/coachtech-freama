@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page--address">   {{-- ★追加：この1行でCSSが効くようになる --}}
+<div class="page--address">
   <div class="container address-edit">
     <h2 class="page-title center">住所の変更</h2>
 

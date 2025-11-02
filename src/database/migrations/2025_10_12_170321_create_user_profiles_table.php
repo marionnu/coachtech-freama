@@ -8,10 +8,10 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->foreignId('user_id')->primary()->constrained()->cascadeOnDelete();
-            $table->string('path')->nullable();            // アイコン等
-            $table->string('postal_code', 8)->nullable();  // 123-4567
-            $table->string('address')->nullable();         // 住所
-            $table->string('building')->nullable();        // 建物名
+            $table->string('path')->nullable();
+            $table->string('postal_code', 8)->nullable();
+            $table->string('address')->nullable();
+            $table->string('building')->nullable();
             $table->timestamps();
         });
     }

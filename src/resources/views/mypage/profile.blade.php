@@ -13,7 +13,6 @@
       @csrf
       @method('PUT')
 
-      {{-- アバター：画像が無ければ灰丸（数字は出さない） --}}
       <div class="avatar-row">
         @if ($avatarPath)
           <img src="{{ Storage::url($avatarPath) }}" alt="avatar"
@@ -22,7 +21,6 @@
           <div class="avatar-ph" aria-label="プロフィール画像未設定"></div>
         @endif
 
-        {{-- 小さめの赤ピルボタン（全幅にしない） --}}
         <label class="btn-primary btn-upload" style="cursor:pointer;">
           画像を選択する
           <input type="file" name="avatar" accept="image/*" hidden>

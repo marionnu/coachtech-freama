@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        // 旧アプリの NOT NULL 制約でエラーを避けるため、nullable にしておく
         if (Schema::hasColumn('categories', 'category_name')) {
             Schema::table('categories', function (Blueprint $table) {
                 $table->string('category_name', 100)->nullable()->change();

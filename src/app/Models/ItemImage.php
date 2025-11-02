@@ -14,7 +14,6 @@ class ItemImage extends Model
         'path',
     ];
 
-    // リレーション：画像は1つの商品に属する
     public function item()
     {
         return $this->belongsTo(Item::class);

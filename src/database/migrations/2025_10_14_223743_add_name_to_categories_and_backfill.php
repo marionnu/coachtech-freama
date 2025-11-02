@@ -10,11 +10,10 @@ return new class extends Migration {
     {
         Schema::table('categories', function (Blueprint $table) {
             if (!Schema::hasColumn('categories', 'name')) {
-                $table->string('name', 100)->after('category_name'); // まず追加
+                $table->string('name', 100)->after('category_name');
             }
         });
 
-        // 既存データを category_name → name へコピー
         DB::statement("UPDATE categories SET name = category_name WHERE name IS NULL OR name = ''");
     }
 
@@ -22,7 +21,7 @@ return new class extends Migration {
     {
         Schema::table('categories', function (Blueprint $table) {
             if (Schema::hasColumn('categories', 'name')) {
-                $table->dropColumn('name'); // 戻すだけ（ここは多くの環境でOK）
+                $table->dropColumn('name');
             }
         });
     }

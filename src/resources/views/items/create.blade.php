@@ -13,8 +13,7 @@
     <form action="{{ route('items.store') }}" method="post" enctype="multipart/form-data">
       @csrf
 
-      <div class="form-grid"><!-- ★ 追加（2カラムのラッパー開始） -->
-      {{-- 商品画像 --}}
+      <div class="form-grid">
       <div class="sec">
         <h3>商品画像</h3>
         <label class="image-drop">
@@ -25,11 +24,9 @@
         @error('images.*') <p class="err">{{ $message }}</p> @enderror
       </div>
 
-      {{-- 商品の詳細 --}}
       <div class="sec">
         <h3>商品の詳細</h3>
 
-        {{-- カテゴリ --}}
         <div class="sec">
           <h3>カテゴリ</h3>
           <div class="chips">
@@ -44,7 +41,6 @@
           @error('categories') <p class="err">{{ $message }}</p> @enderror
         </div>
 
-        {{-- 状態 --}}
         <div class="sec">
           <h3>商品の状態</h3>
           <select name="condition" class="select" required>
@@ -56,7 +52,6 @@
           @error('condition') <p class="err">{{ $message }}</p> @enderror
         </div>
 
-        {{-- 名称等 --}}
         <div class="sec">
           <h3>商品名と説明</h3>
           <input class="input" name="name" value="{{ old('name') }}" placeholder="商品名" required>
@@ -73,7 +68,6 @@
           @error('description') <p class="err">{{ $message }}</p> @enderror
         </div>
 
-        {{-- 価格 --}}
         <div class="sec">
           <h3>販売価格</h3>
           <div class="yen">
@@ -90,7 +84,6 @@
   </div>
 </div>
 
-{{-- 画像プレビュー（必要なら外部JSに分離可） --}}
 <script>
   document.getElementById('images')?.addEventListener('change', function(e){
     const box = document.getElementById('preview');

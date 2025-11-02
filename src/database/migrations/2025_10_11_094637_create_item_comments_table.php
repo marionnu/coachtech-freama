@@ -1,0 +1,25 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateItemCommentsTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('item_comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
+            $table->text('body');
+            $table->timestamps();
+            $table->index(['item_id', 'created_at']);
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('item_comments');
+    }
+}
